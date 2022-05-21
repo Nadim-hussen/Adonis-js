@@ -3,108 +3,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdonisJS - A fully featured web framework for Node.js</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
   <style>
-    html, body {
-      background-color: #F7F8FA;
-      font-family: 'Poppins', sans-serif;
-      height: 100vh;
-      color: #46444c;
-      position: relative;
-    }
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar{
+    background-color: #4f3e9e;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+input{
+    padding: 5px;
+}
+.left{
+    margin-left: auto;
+    margin-right: 10px;
+}
+.left .router-reg{
+    color: #fff;
+    margin-right: 15px;
+}
+.left .router-log{
+    color: #fff;
+}
+.form-head {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sub-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #4d918c;
+  padding: 15px;
+}
+.sub-head h2 {
+  font-family: "Roboto", sans-serif;
+}
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+form,
+.form-h2 {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+.form-btn {
+  padding: 5px;
+  background-color: #053668;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+  border: 1px solid #789beb;
+  border-radius: 5px;
+}
+.form-label {
+  font-weight: 600;
+}
+.form-name {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-email {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-phone {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.form-password {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.form-redirect {
+  font-weight: 700;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+}
+a {
+  color: #053668;
+  font-weight: 900;
+}
 
-    body:before {
-      content: '';
-      background: #5A45FF;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      position: absolute;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    a {
-      color: #5A45FF;
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 620px;
-      margin: auto;
-      height: 100vh;
-      padding: 0 30px;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-
-    .title {
-      font-size: 50px;
-      line-height: 50px;
-      margin-bottom: 10px;
-      color: #17161A;
-    }
-
-    .subtitle {
-      font-size: 26px;
-      margin-bottom: 40px;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    main ul {
-      list-style: none;
-    }
-
-    main li {
-      margin-bottom: 5px;
-      position: relative;
-      padding-left: 25px;
-    }
-
-    main li:before {
-      content: '—';
-      position: absolute;
-      left: 0;
-    }
-
-    main code {
-      font-size: 16px;
-      background: #e6e2ff;
-    }
   </style>
 </head>
 <body>
+  {{--  <div class="navbar">
+    <span class="left">
+            <router-link class="router-reg" to="/" exact>Registration</router-link>
+    <router-link class="router-log" to="/login" exact> Login</router-link>
+    </span>
 
-  <main>
-    <div>
-      <h1 class="title"> It Works! </h1>
-      <p class="subtitle">
-        Congratulations, you have just created your first AdonisJS app.
-      </p>
+</div>  --}}
+<div>
+<div class="form-head">
+  <div class="sub-head">
+    <h2 class="form-h2">Registration</h2>
 
-      <ul>
-        <li>
-          The route for this page is defined inside <code>start/routes.ts</code> file
-        </li>
-
-        <li>
-          You can update this page by editing <code>resources/views/welcome.edge</code> file
-        </li>
-
-        <li>
-          If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a href="https://forum.adonisjs.com/">Forum</a>.
-        </li>
-      </ul>
+    <div class="form-name">
+      <label class="form-label" for="username">Name &nbsp; : &nbsp;</label>
+      <input
+        type="text"
+        id="name"
+        name="username"
+        autocomplete="off"
+        placeholder="Enter your name"
+      />
+      <br />
     </div>
-  </main>
+
+    <div class="form-name">
+      <label class="form-label" for="age">Age &nbsp; : &nbsp;</label>
+      <input
+        type="text"
+        id="name"
+        name="age"
+        name="username"
+        autocomplete="off"
+        placeholder="Enter your age"
+      />
+      <br />
+    </div>
+    <div class="form-email">
+      <label class="form-label" for="email">Email &nbsp; : &nbsp;</label>
+      <input
+        type="email"
+        autocomplete="off"
+        name="email"
+        placeholder="Enter your email"
+      <br />
+    </div>
+    <div class="form-password">
+      <label class="form-label" for="password"
+        >Password &nbsp; : &nbsp;</label
+      >
+      <input
+        type="password"
+        id="password"
+        name="password"
+        autocomplete="off"
+        placeholder="Enter your password"
+      <br />
+    </div>
+
+
+    <div class="form-button">
+      <button class="form-btn" type="button" @click="storeUser">
+        Submit
+      </button>
+    </div>
+
+    <p class="form-redirect">
+      Have an account? <router-link to="/login"> Log in now</router-link>
+    </p>
+  </div>
+</div>
+</div>
 </body>
 </html>
