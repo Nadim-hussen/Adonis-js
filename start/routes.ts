@@ -20,14 +20,26 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
+Route.group(() => {
+  Route.get('/hello','PetsController.index');
+  Route.get('/home',async({view})=>{
+    return view.render('home')
+  })
+  Route.post('/logout','UsersController.logout')
+}).middleware('auth')
+
+
+Route.group(() => {
+  Route.get('/','PetsController.register')
+  Route.get('/login','PetsController.login')
+}).middleware('guest')
+
+Route.post('/addUsers','UsersController.addUser');
+Route.post('/login','UsersController.login')
+
 // Route.get('/hello',async ()=>{
 //   return 'hello world';
 // })
 // Route.get('/about',async ()=>{
 //   return 'hello about';
 // })
-
-Route.get('/hello','PetsController.index');

@@ -55,6 +55,7 @@ form,
 .form-h2 {
   text-align: center;
   font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
 }
 .form-btn {
   padding: 5px;
@@ -73,6 +74,7 @@ form,
 .form-name {
   margin-bottom: 10px;
   display: flex;
+
   justify-content: flex-end;
   align-items: center;
 }
@@ -104,6 +106,13 @@ a {
   color: #053668;
   font-weight: 900;
 }
+.errors{
+  color: white;
+  padding: 5px;
+  font-size: 16px;
+  background-color: red;
+  text-align: center
+}
 
   </style>
 </head>
@@ -119,62 +128,76 @@ a {
 <div class="form-head">
   <div class="sub-head">
     <h2 class="form-h2">Registration</h2>
+    @if(flashMessages.has('errors.username'))
+        <p class="errors">{{flashMessages.get('errors.username')}}</p><br/>
+    @endif
+    @if(flashMessages.has('errors.age'))
+        <p class="errors">{{flashMessages.get('errors.age')}}</p><br/>
+    @endif
+    @if(flashMessages.has('errors.email'))
+        <p class="errors">{{flashMessages.get('errors.email')}}</p><br/>
+    @endif
+    @if(flashMessages.has('errors.password'))
+        <p class="errors">{{flashMessages.get('errors.password')}}</p><br/>
+    @endif
+     <form action="{{'/addUsers'}}" method="post">
+       {{--  {{ csrfField }}  --}}
+      <div class="form-name">
 
-    <div class="form-name">
-      <label class="form-label" for="username">Name &nbsp; : &nbsp;</label>
-      <input
-        type="text"
-        id="name"
-        name="username"
-        autocomplete="off"
-        placeholder="Enter your name"
-      />
-      <br />
-    </div>
+        <label class="form-label" for="username">UserName &nbsp; : &nbsp;</label>
+        <input
+          type="text"
+          id="name"
+          name="username"
+          autocomplete="off"
+          placeholder="Enter your name"
+        />
+        <br />
+      </div>
 
-    <div class="form-name">
-      <label class="form-label" for="age">Age &nbsp; : &nbsp;</label>
-      <input
-        type="text"
-        id="name"
-        name="age"
-        name="username"
-        autocomplete="off"
-        placeholder="Enter your age"
-      />
-      <br />
-    </div>
-    <div class="form-email">
-      <label class="form-label" for="email">Email &nbsp; : &nbsp;</label>
-      <input
-        type="email"
-        autocomplete="off"
-        name="email"
-        placeholder="Enter your email"
-      <br />
-    </div>
-    <div class="form-password">
-      <label class="form-label" for="password"
-        >Password &nbsp; : &nbsp;</label
-      >
-      <input
-        type="password"
-        id="password"
-        name="password"
-        autocomplete="off"
-        placeholder="Enter your password"
-      <br />
-    </div>
+      <div class="form-name">
+        <label class="form-label" for="age">Age &nbsp; : &nbsp;</label>
+        <input
+          type="text"
+          id="age"
+          name="age"
+          autocomplete="off"
+          placeholder="Enter your age"
+        />
+        <br />
+      </div>
+      <div class="form-email">
+        <label class="form-label" for="email">Email &nbsp; : &nbsp;</label>
+        <input
+          type="email"
+          autocomplete="off"
+          name="email"
+          placeholder="Enter your email"
+        <br />
+      </div>
+      <div class="form-password">
+        <label class="form-label" for="password"
+          >Password &nbsp; : &nbsp;</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+          placeholder="Enter your password"
+        <br />
+      </div>
 
 
-    <div class="form-button">
-      <button class="form-btn" type="button" @click="storeUser">
-        Submit
-      </button>
-    </div>
+      <div class="form-button">
+        <button class="form-btn" type="submit" @click="storeUser">
+          Submit
+        </button>
+      </div>
+  </form>
 
     <p class="form-redirect">
-      Have an account? <router-link to="/login"> Log in now</router-link>
+      Have an account? <a href="/login"> Log in now</a>
     </p>
   </div>
 </div>
