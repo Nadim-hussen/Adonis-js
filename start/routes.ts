@@ -25,6 +25,12 @@ Route.group(() => {
   Route.get('/home',async({view})=>{
     return view.render('home')
   })
+  // Route.get('/addPosts', async({view})=>{
+  //   return view.render('addPosts')
+  // })
+  Route.get('/allPosts','PetsController.allPosts')
+  Route.get('/addPosts','PetsController.addPost')
+  Route.post('/addPosts','PetsController.addPosts')
   Route.post('/logout','UsersController.logout')
 }).middleware('auth')
 

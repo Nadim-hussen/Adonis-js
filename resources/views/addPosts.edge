@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        form{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background-color: bisque;
+            gap: 20px;
+            padding: 20px 25px;
+        }
+        textarea{
+            resize: none
+        }
+        .textarea_head{
+            display: flex
+        }
+        button{
+            padding: 5px 6px;
+            font-size: 16px;
+            border: none;
+            background-color: red;
+        }
+        input{
+            font-size: 18px;
+            padding: 10px;
+        }
+        textarea{
+            font-size: 18px;
+            padding: 20px;
+        }
+        .h1{
+            text-align: center;
+            color: #1703fc;
+        }
+        button{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .your_posts_head{
+            width: 100vw;
+            display: grid;
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            place-items: center;
+            grid-template-columns: 50% 50%;
+
+            /* flex-direction: column; */
+        }
+        .card{
+            width: 95%;
+            /* height: auto; */
+            background-color: #7703fc;
+            padding: 10px 15px;
+            color: #fff;
+        }
+        .card h1{
+            text-align: center;
+        }
+        .card p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h1">Your Posts</h1>
+    <form action="/addPosts" method="post">
+        @if(flashMessages.has('errors.title'))
+        <p class="errors">{{flashMessages.get('errors.title')}}</p><br/>
+    @endif
+    @if(flashMessages.has('errors.description'))
+    <p class="errors">{{flashMessages.get('errors.description')}}</p><br/>
+@endif
+        <div>
+            <label for="Title">Title &nbsp; :</label>
+            <input type="text" name="title" id="Title">
+        </div>
+        <div class="textarea_head">
+            <label for="Description">Description &nbsp; :</label>
+            <textarea name="description" id="Description" cols="40" rows="15"></textarea>
+        </div>
+        <button type="submit">Post</button>
+    </form>
+    {{--  your posts   --}}
+    <h1 class="h1">Your Posts</h1>
+    <div class="your_posts_head">
+        @each(post in posts)
+            <div class="card">
+                <h1>{{post.title}}</h1>
+                <p>{{post.description}}</p>
+            </div>
+        @endeach
+    </div>
+</body>
+</html>

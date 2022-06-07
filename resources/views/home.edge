@@ -7,7 +7,7 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Hello  {{ auth.user.username }}</h1>
+    <h1>Hello  {{ auth.user.email }}</h1>
     <form action="{{'/logout'}}" method="POST">
         <button type="submit">logout</button>
     </form>
